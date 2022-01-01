@@ -2,8 +2,8 @@ package sort
 
 type Raw []int
 
-func (r Raw) Swap(i, j int) {
-	r[i], r[j] = r[j], r[i]
+func (r *Raw) Swap(i, j int) {
+	(*r)[i], (*r)[j] = (*r)[j], (*r)[i]
 }
 
 func Diff(r1, r2 Raw) bool {
