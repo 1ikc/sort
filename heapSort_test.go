@@ -24,3 +24,26 @@ func TestHeapSort(t *testing.T) {
 	}
 	t.Logf("[pass] HeapSort: %v", r3)
 }
+
+func TestHeapSort2(t *testing.T) {
+	r1 := Raw([]int{})
+	r1Expected := r1
+	if !Diff(HeapSort2(r1), r1Expected) {
+		t.Fatalf("[fail] HeapSort2: %v", r1)
+	}
+	t.Logf("[pass] HeapSort2: %v", r1)
+
+	r2 := Raw([]int{1, 5, 7, 8, 3, 4, 6})
+	r2Expected := Raw([]int{1, 3, 4, 5, 6, 7, 8})
+	if !Diff(HeapSort2(r2), r2Expected) {
+		t.Fatalf("[fail] HeapSort2: %v", r2)
+	}
+	t.Logf("[pass] HeapSort2: %v", r2)
+
+	r3 := Raw([]int{5, 1, 1, 2, 0, 0})
+	r3Expected := Raw([]int{0, 0, 1, 1, 2, 5})
+	if !Diff(HeapSort2(r3), r3Expected) {
+		t.Fatalf("[fail] HeapSort2: %v", r3)
+	}
+	t.Logf("[pass] HeapSort2: %v", r3)
+}

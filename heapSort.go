@@ -1,5 +1,9 @@
 package sort
 
+import "container/heap"
+
+// 1. 自实现
+
 func HeapSort(raw Raw) Raw {
 	n := len(raw)
 
@@ -38,4 +42,38 @@ func HeapSort(raw Raw) Raw {
 	}
 
 	return raw
+}
+
+// 2. 依赖官方库实现
+
+func (r *Raw) Less(i, j int) bool {
+	return (*r)[i] < (*r)[j]
+}
+
+func (r *Raw) Len() int {
+	return len(*r)
+}
+
+func (r *Raw) Push(x interface{}) {
+	*r = append(*r, x.(int))
+}
+
+func (r *Raw) Pop() interface{} {
+	v := (*r)[r.Len() - 1]
+	*r = (*r)[:r.Len() - 1]
+	return v
+}
+
+func HeapSort2(raw Raw) Raw {
+	n := len(raw)
+	ret := Raw{}
+
+	heap.Init(&raw)
+
+	for i := 0; i < n; i++ {
+		v := heap.Pop(&raw)
+		ret = append(ret, v.(int))
+	}
+
+	return ret
 }
