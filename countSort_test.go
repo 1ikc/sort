@@ -23,4 +23,11 @@ func TestCountSort(t *testing.T) {
 		t.Fatalf("[fail] CountSort: %v", r3)
 	}
 	t.Logf("[pass] CountSort: %v", r3)
+
+	r4 := Raw([]int{-1, -4, 0})
+	r4Expected := Raw([]int{-4, -1, 0})
+	if !Diff(CountSort(r4), r4Expected) {
+		t.Fatalf("[fail] CountSort: %v", r4)
+	}
+	t.Logf("[pass] CountSort: %v", r4)
 }
